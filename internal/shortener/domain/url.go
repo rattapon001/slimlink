@@ -14,6 +14,12 @@ type (
 		UpdatedAt   time.Time `json:"updated_at"`
 		AccessCount int64     `json:"access_count"`
 	}
+	Repository interface {
+		Save(...*Url) error
+		Find(UrlId) (*Url, error)
+		FindAll() ([]*Url, error)
+		Delete(UrlId) error
+	}
 )
 
 var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
